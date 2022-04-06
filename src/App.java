@@ -1,6 +1,4 @@
-import data.Customer;
-import data.Food;
-import data.Table;
+import data.*;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -14,6 +12,9 @@ public class App {
     private ArrayList<Customer> customers = new ArrayList<>();
     private ArrayList<Table> tables = new ArrayList<>();
     private ArrayList<Food> menu = new ArrayList<>();
+    private ArrayList<Waiter> waiters = new ArrayList<>();
+    private ArrayList<Transaction> transactions = new ArrayList<>();
+
     private Customer loggedInCustomer = null;
 
     private Scanner scan = new Scanner(System.in);
