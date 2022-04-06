@@ -1,38 +1,43 @@
 package data;
 
 public class Customer {
-    private String CustomerID, name, phone;
-    private int numberReservation;
+    private String email;
+    private String password;
+    private String name;
+    private String phone;
 
-    public String getCustomerID() {
-        return CustomerID;
+    public Customer(String email, String password, String name, String phone) {
+        this.email = email;
+        this.password = password;
+        this.name = name;
+        this.phone = phone;
     }
 
-    public void setCustomerID(String customerID) {
-        CustomerID = customerID;
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPassword() {
+        return password;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getPhone() {
         return phone;
     }
 
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public void setPhone(String phone) {
         this.phone = phone;
-    }
-
-    public int getNumberReservation() {
-        return numberReservation;
-    }
-
-    public void setNumberReservation(int numberReservation) {
-        this.numberReservation = numberReservation;
     }
 }
