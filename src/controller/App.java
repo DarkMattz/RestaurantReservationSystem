@@ -1,9 +1,7 @@
+package controller;
+
 import data.*;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -53,6 +51,7 @@ public class App {
                     manager();
                     break;
                 case 3:
+                    System.out.println("Thank you for using our service");
                     System.exit(0);
                     break;
                 default:
