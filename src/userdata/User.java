@@ -7,7 +7,7 @@ public abstract class User {
 	private String name;
 	private String type;
 	
-	public abstract void generateId();
+	public abstract String generateId();
 	
 	public User(String id, String email, String password, String name, String type) {
 		super();

@@ -167,7 +167,7 @@ public class App {
                         do {
                             System.out.print("Input your password [Must not be blank]: ");
                             password = scan.nextLine();
-                        } while (password.isBlank());
+                        } while (password.isEmpty());
 
                         loggedInCustomer.setPassword(password);
                         break;
@@ -190,7 +190,7 @@ public class App {
                     System.out.print("Input your email [Must not be blank | press 0 to quit]: ");
 
                     email = scan.nextLine();
-                } while (email.isBlank());
+                } while (email.isEmpty());
 
                 if (email.equals("0")) {
                     return false;
@@ -201,7 +201,7 @@ public class App {
                 do {
                     System.out.print("Input your password [Must not be blank | press 0 to quit]: ");
                     password = scan.nextLine();
-                } while (password.isBlank());
+                } while (password.isEmpty());
 
                 if (password.equals("0")) {
                     return false;
@@ -235,14 +235,14 @@ public class App {
                     email = "";
                 }
             }
-        } while (email.isBlank());
+        } while (email.isEmpty());
 
         String password;
 
         do {
             System.out.print("Input your password [Must not be blank]: ");
             password = scan.nextLine();
-        } while (password.isBlank());
+        } while (password.isEmpty());
 
         String name;
 
