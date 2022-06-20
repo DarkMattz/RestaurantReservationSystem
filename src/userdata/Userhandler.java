@@ -8,13 +8,13 @@ public class Userhandler {
 	private User user = null;
 	String regexEmail = "^(.+)@(\\S+)$";
 	
+	
 	public String register(String email, String name, String password) {
 		
 		boolean isEmailValid = false;
 		boolean isNameValid = false;
 		boolean isPassValid = false;
-		
-		boolean doILoveYou = true;
+		boolean isCheckEmailSuccess = false;
 		
 //		Validasi Email
 		if(email.isEmpty()) {
@@ -36,6 +36,17 @@ public class Userhandler {
 				
 				return "Email pattern is incorrect !";			
 			}
+			
+			 //salah (isEmailExist), return false
+			
+			if(database.checkEmail(email)) {
+				
+				return "Email is already in use !";
+			}else {
+				
+				isCheckEmailSuccess = true;
+			}
+			
 		}
 		
 //		Validasi nama
@@ -69,23 +80,23 @@ public class Userhandler {
 
 		}	
 		
-		if(!isEmailValid) {
+		if(!isEmailValid && !isCheckEmailSuccess) {
 			
-			System.out.println("Email is not valid");
+			return "Email is not valid";
 		}
 		
 		if(!isNameValid) {
 			
-			System.out.println("Username is not valid");
+			return "Username is not valid";
 		}
 		
 		if(!isPassValid) {
 			
-			System.out.println("Password is not valid");
+			return "Password is not valid";
 		}
 		
 			
-		if(isEmailValid && isNameValid && isPassValid) {
+		if(isEmailValid && isNameValid && isPassValid && isCheckEmailSuccess) {
 			
 			return null;
 		}
@@ -136,8 +147,9 @@ public class Userhandler {
 				return "Input your password !";
 			}else {
 				
-//				 ngecocokin yg ada di database cocok ga?
-				if() {
+				// ngecocokin yg ada di database cocok ga?
+				//checkPassword() nanti return nya false kalo misalkan dia ga sesuai dg yg terdaftar
+				if(database.checkPassword()) {
 					
 					return "Password didn't match !";
 				}else {
@@ -164,28 +176,42 @@ public class Userhandler {
 				return null;
 			}
 			
-			return "Register data is incorrect !";
+			return "Login data is incorrect !";
 			
 		
-		return null;
+		return "Login unsuccessful !";
 	}
 	
 	public String logout() {
 		
-		return null;
+		user = null;
+		
+		return "User has been logged out";
 	}
 	
-	public String removeUser(String id) {
+	public String removeUser(String email) {
 		
-		boolean isIdValid;
+		boolean isEmailValid = false;
+		boolean isCheckEmailSuccess = false;
 		
-		if(id.isEmpty()) {
+		if(email.isEmpty()) {
 			
-			return "Input your id to Continue !";
+			return "Input your email to Continue !";
+		}else {
+			
+			//ngetest data email di database sesuai apa ngga
+			if(database.checkEmail()) {
+				
+				return "Invalid Email !";
+			}else {
+				
+				isEmailValid = true;
+				return null;
+			}
+			
 		}
 		
-		
-		return null;
+		return "Can't be removed !";
 	}
 	
 	public Userhandler() {
