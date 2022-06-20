@@ -1,19 +1,21 @@
 package data;
 
+import java.util.Vector;
+
 public class Transaction {
 
 	private String transactionId;
 	private String customerId;
 	private Integer tableNumber;
-	private Food[] foods;
+	private Vector<Food> food = new Vector<>();
 	private Integer date;
 	
-	public Transaction(String transactionId, String customerId, Integer tableNumber, Food[] foods, Integer date) {
+	public Transaction(String transactionId, String customerId, Integer tableNumber, Vector<Food> food, Integer date) {
 		super();
 		this.transactionId = transactionId;
 		this.customerId = customerId;
 		this.tableNumber = tableNumber;
-		this.foods = foods;
+		this.food = food;
 		this.date = date;
 	}
 
@@ -41,12 +43,12 @@ public class Transaction {
 		this.tableNumber = tableNumber;
 	}
 
-	public Food[] getFoods() {
-		return foods;
+	public Vector<Food> getFoods() {
+		return food;
 	}
 
-	public void setFoodId(Food[] foods) {
-		this.foods = foods;
+	public void setFoodId(Vector<Food> food) {
+		this.food = food;
 	}
 
 	public Integer getDate() {
