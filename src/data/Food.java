@@ -1,19 +1,25 @@
 package data;
 
 public class Food {
-    private String foodType;
+    private String foodId;
     private String foodName;
+    private Integer foodPrice;
 
-    public Food(String foodType, String foodName) {
-        this.foodType = foodType;
+    public Food(String foodId, String foodName, Integer foodPrice) {
+        this.foodId = foodId;
         this.foodName = foodName;
+        this.foodPrice = foodPrice;
     }
 
-    public String getFoodType() {
-        return foodType;
+    public String getFoodId() {
+        return foodId;
     }
 
     public String getFoodName() {
         return foodName;
+    }
+    
+    public Integer getFoodPrice() {
+    	return foodPrice;
     }
 }

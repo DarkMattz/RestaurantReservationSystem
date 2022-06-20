@@ -1,58 +1,59 @@
 package data;
 
-import data.Customer;
+public class Transaction {
 
-import java.util.ArrayList;
-import java.util.Calendar;
+	private String transactionId;
+	private String customerId;
+	private Integer tableNumber;
+	private String foodId;
+	private Integer date;
+	
+	public Transaction(String transactionId, String customerId, Integer tableNumber, String foodId, Integer date) {
+		super();
+		this.transactionId = transactionId;
+		this.customerId = customerId;
+		this.tableNumber = tableNumber;
+		this.foodId = foodId;
+		this.date = date;
+	}
 
-public class Transaction{
-    public Customer customer;
-    public Calendar date;
-    public Table table;
-    public Waiter waiter;
-    public ArrayList<OrderedFood> foods;
+	public String getTransactionId() {
+		return transactionId;
+	}
 
-    public Transaction(Customer customer, Calendar date, Table table, Waiter waiter, ArrayList<OrderedFood> foods) {
-        this.customer = customer;
-        this.date = date;
-        this.table = table;
-        this.waiter = waiter;
-        this.foods = foods;
-    }
+	public void setTransactionId(String transactionId) {
+		this.transactionId = transactionId;
+	}
 
-    public Customer getCustomer() {
-        return customer;
-    }
+	public String getCustomerId() {
+		return customerId;
+	}
 
-    public Calendar getDate() {
-        return date;
-    }
+	public void setCustomerId(String customerId) {
+		this.customerId = customerId;
+	}
 
-    public Table getTable() {
-        return table;
-    }
+	public Integer getTableNumber() {
+		return tableNumber;
+	}
 
-    public Waiter getWaiter() {
-        return waiter;
-    }
+	public void setTableNumber(Integer tableNumber) {
+		this.tableNumber = tableNumber;
+	}
 
-    public ArrayList<OrderedFood> getFoods() {
-        return foods;
-    }
+	public String getFoodId() {
+		return foodId;
+	}
 
-    public void setDate(Calendar date) {
-        this.date = date;
-    }
+	public void setFoodId(String foodId) {
+		this.foodId = foodId;
+	}
 
-    public void setTable(Table table) {
-        this.table = table;
-    }
+	public Integer getDate() {
+		return date;
+	}
 
-    public void setWaiter(Waiter waiter) {
-        this.waiter = waiter;
-    }
-
-    public void setFoods(ArrayList<OrderedFood> foods) {
-        this.foods = foods;
-    }
+	public void setDate(Integer date) {
+		this.date = date;
+	}
 }
