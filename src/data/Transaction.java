@@ -5,15 +5,15 @@ public class Transaction {
 	private String transactionId;
 	private String customerId;
 	private Integer tableNumber;
-	private String foodId;
+	private Food[] foods;
 	private Integer date;
 	
-	public Transaction(String transactionId, String customerId, Integer tableNumber, String foodId, Integer date) {
+	public Transaction(String transactionId, String customerId, Integer tableNumber, Food[] foods, Integer date) {
 		super();
 		this.transactionId = transactionId;
 		this.customerId = customerId;
 		this.tableNumber = tableNumber;
-		this.foodId = foodId;
+		this.foods = foods;
 		this.date = date;
 	}
 
@@ -41,12 +41,12 @@ public class Transaction {
 		this.tableNumber = tableNumber;
 	}
 
-	public String getFoodId() {
-		return foodId;
+	public Food[] getFoods() {
+		return foods;
 	}
 
-	public void setFoodId(String foodId) {
-		this.foodId = foodId;
+	public void setFoodId(Food[] foods) {
+		this.foods = foods;
 	}
 
 	public Integer getDate() {
