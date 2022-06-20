@@ -98,6 +98,7 @@ public class Userhandler {
 		boolean isEmailValid = false;
 		boolean isPassValid = false;
 		
+//		validasi email
 		if(email.isEmpty()) {
 			
 			return "Input your Email address !";
@@ -118,9 +119,53 @@ public class Userhandler {
 				return "Email pattern is incorrect !";			
 			}
 			
+			//ngecocokin yg ada di database cocok ga?
+			if() {
+				
+				return "Email not found !";
+			}else {
+				
+				isEmailValid = true;
+			}
 		}
 		
-		
+			
+//			validasi password
+			if(password.isEmpty()) {
+				
+				return "Input your password !";
+			}else {
+				
+//				 ngecocokin yg ada di database cocok ga?
+				if() {
+					
+					return "Password didn't match !";
+				}else {
+					
+					isPassValid = true;
+				}
+
+			}
+			
+			if(!isEmailValid) {
+				
+				System.out.println("Email is not valid");
+			}
+			
+			
+			if(!isPassValid) {
+				
+				System.out.println("Password is not valid");
+			}
+			
+				
+			if(isEmailValid && isPassValid) {
+				
+				return null;
+			}
+			
+			return "Register data is incorrect !";
+			
 		
 		return null;
 	}
