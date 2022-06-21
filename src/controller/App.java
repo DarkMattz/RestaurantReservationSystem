@@ -92,10 +92,16 @@ public class App {
                 case 3:
                     editProfile();
                     break;
+                case 4:
+                	userLogout();
                 default:
                     System.out.println("Please input from 1 to 4");
             }
         } while (input != 4);
+    }
+    
+    private void userLogout() {
+    	loggedInCustomer = null;
     }
 
     private void reserve() {
@@ -351,6 +357,7 @@ public class App {
                 	return false;
                 }else {
                 	System.out.println("Successfully logged in...");
+                	return true;
                 	pressEnter();
                 }
 
