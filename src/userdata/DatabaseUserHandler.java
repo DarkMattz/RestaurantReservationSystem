@@ -1,5 +1,7 @@
 package userdata;
 
+import java.util.ArrayList;
+
 public class DatabaseUserHandler {
 
 	public DatabaseUserHandler() {
@@ -15,21 +17,45 @@ public class DatabaseUserHandler {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
-	public boolean isEmailExist(String email) {
+	
+	public ArrayList<Customer> getCustomerData() {
 		// TODO Auto-generated method stub
-		return false;
+		return null;
 	}
 
-	public boolean isPassTrue(String password) {
+	public String getName(String email) {
 		// TODO Auto-generated method stub
-		return false;
+		return null;
+	}
+	
+//	ini juga setipe pebbbbbbb
+	public Customer findCustomer(String email, String password) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
-	public void deleteUser(String emailDeleted) {
+	public Admin findAdmin(String email, String password) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
+
+//	peb ini setipe yaaakkk, tenkyuuu
+	public String editName(Customer customer, String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public String editPhone(Customer customer, String phone) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public String editPass(Customer customer, String pass) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
 
 	
 

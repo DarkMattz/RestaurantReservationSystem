@@ -1,5 +1,6 @@
 package userdata;
 
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -13,6 +14,11 @@ public class Userhandler {
 	
 	public Userhandler() {
 		
+	}
+	
+	ArrayList<Customer> getAllCust(){
+		
+		return database.getCustomerData();
 	}
 	
 	public String isValidEmail(String email) {
@@ -128,49 +134,42 @@ public class Userhandler {
 		return "Phone number is Invalid !";
 	}
 	
-	public String registerUser(String email, String name, String pass, String phone) {
+	public void registerUser(String email, String name, String pass, String phone) {
 		
-		if(database.PushData()) {
-			
-			return null;
-		}else {
-			
-			return "Failed !";
-		}
+		database.PushData();
 	}
 	
 	public Customer customerLogin(String email, String password) {
 		
-		Customer customer = new Customer();
+		Customer customer = database.findCustomer(email, password); //balikin customer
 		
-		if(database.isEmailExist(email) && database.isPassTrue(password)) {
-			
-			return customer;
-		}else {
-			
-			return null;
-		}
-		
+		return customer;
 	}
 	
 	public Admin adminLogin(String email, String password) {
 		
-		Admin admin = new Admin();
+		Admin admin = database.findAdmin(email, password);
 		
-		if(database.isEmailExist(email) && database.isPassTrue(password)) {
-			
-			return admin;
-		}else {
-			
-			return null;
-		}
+		return admin;
 	}
 	
-	public String logout() {
+	public void editName(Customer customer, String name) {
 		
-		user = null;
-		
-		return "User has been logged out";
+		name = database.editName(customer, name);
 	}
 	
+	public void editPhone(Customer customer, String phone) {
+		
+		phone = database.editPhone(customer, phone);
+	}
+	
+	public void editPass(Customer customer, String pass) {
+		
+		pass = database.editPass(customer, pass);
+	}
+	
+	public String getCustomerName(String email) {
+		
+		return database.getName(email);
+	}
 }
