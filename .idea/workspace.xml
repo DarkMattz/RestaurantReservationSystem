@@ -7,9 +7,8 @@
     <list default="true" id="12294ce9-b460-492c-87fd-60a40f4d327f" name="Changes" comment="Update DB Handler">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/RestaurantDB/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RestaurantDB/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantDB/database/Connect.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RestaurantDB/database/Connect.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RestaurantDB/database/DatabaseUserHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RestaurantDB/database/DatabaseUserHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/userdata/Userhandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/userdata/Userhandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RestaurantDB/userdata/Userhandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RestaurantDB/userdata/Userhandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,7 +117,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655826020116</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Update DB Handler">
+      <created>1655826672564</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1655826672564</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
