@@ -8,12 +8,9 @@ public class Userhandler {
 	private User user = null;
 	String regexEmail = "^(.+)@(\\S+)$";
 	
-	
-	public String register(String email, String name, String password) {
+	public String registerCheckEmail(String email) {
 		
 		boolean isEmailValid = false;
-		boolean isNameValid = false;
-		boolean isPassValid = false;
 		boolean isCheckEmailSuccess = false;
 		
 //		Validasi Email
@@ -49,6 +46,16 @@ public class Userhandler {
 			
 		}
 		
+		if(isEmailValid && isCheckEmailSuccess) {
+			
+			return null;
+		}
+	}
+	
+	public String registerCheckName (String name) {
+		
+		boolean isNameValid = false;
+		
 //		Validasi nama
 		if(name.isEmpty()) {
 			return "Input your name !";
@@ -62,6 +69,14 @@ public class Userhandler {
 				isNameValid = true;
 			}
 		}
+		
+		return null;
+		
+	}
+	
+	public String registerCheckPass(String password) {
+		
+		boolean isPassValid = false;
 		
 //		Validasi password
 		if(password.isEmpty()) {
@@ -78,31 +93,11 @@ public class Userhandler {
 				isPassValid = true;
 			}
 
-		}	
-		
-		if(!isEmailValid && !isCheckEmailSuccess) {
-			
-			return "Email is not valid";
 		}
 		
-		if(!isNameValid) {
-			
-			return "Username is not valid";
-		}
-		
-		if(!isPassValid) {
-			
-			return "Password is not valid";
-		}
-		
-			
-		if(isEmailValid && isNameValid && isPassValid && isCheckEmailSuccess) {
-			
-			return null;
-		}
-		
-		return "Register data is incorrect !";
+		return null;
 	}
+	
 	
 	public String login(String email, String password) {
 		
