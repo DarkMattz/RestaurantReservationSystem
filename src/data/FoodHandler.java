@@ -1,5 +1,6 @@
 package data;
 
+import database.DatabaseTransactionHandler;
 import java.util.ArrayList;
 
 public class FoodHandler {
@@ -25,7 +26,6 @@ public class FoodHandler {
 	}
 	
 	public ArrayList<Food> ShowFood() {
-		dbth.ShowFood(food);
-		return food;
+		return food = dbth.ShowFood(food);
 	}
 }
