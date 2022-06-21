@@ -94,6 +94,7 @@ public class App {
                     break;
                 case 4:
                 	userLogout();
+                	break;
                 default:
                     System.out.println("Please input from 1 to 4");
             }
