@@ -1,10 +1,10 @@
 package data;
 
-import java.util.Vector;
+import java.util.ArrayList;
 
 public class FoodHandler {
 
-	private Vector<Food> food = new Vector<>();
+	private ArrayList<Food> food = new ArrayList<>();
 	
 	public void AddFood(String foodId, String foodName, Integer foodPrice) {
 		food.add(new Food(foodId, foodName, foodPrice));
@@ -21,23 +21,7 @@ public class FoodHandler {
 		}
 	}
 	
-	public void UpdateFood(String foodId, String foodName, Integer foodPrice) {
-		
-		int input = 0;
-		
-		for(int i = 0; i < food.size(); i++) {
-			Food getFood = food.get(i);
-			
-			if(getFood.getFoodId().equals(foodId)) {
-				input = i;
-				break;
-			}
-		}
-		
-		Food getFood = food.get(input);
-		
-		getFood.setFoodId(foodId);
-		getFood.setFoodName(foodName);
-		getFood.setFoodPrice(foodPrice);
+	public ArrayList<Food> ShowFood() {
+		return food;
 	}
 }

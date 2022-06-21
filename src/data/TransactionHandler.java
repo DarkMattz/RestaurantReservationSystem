@@ -1,10 +1,10 @@
 package data;
 
-import java.util.Vector;
+import java.util.ArrayList;
 
 public class TransactionHandler {
 	
-	private Vector<Transaction> transaction = new Vector<>();	
+	private ArrayList<Transaction> transaction = new ArrayList<>();
 	
 	public void NewTransaction(String customerId, Integer tableNumber, Vector<Food> food, Integer date) {
 		String transactionId = "TR" + (int)Math.ceil(Math.random()*10) + (int)Math.ceil(Math.random()*10) + (int)Math.ceil(Math.random()*10);
@@ -24,18 +24,23 @@ public class TransactionHandler {
 		}
 	}
 	
-	public void ShowTransaction() {
+	public int CalculateIncome(String transactionId) {
+		int income = 0;
+		int target = 0;
 		
 		for(int i = 0; i < transaction.size(); i++) {
 			Transaction getTransaction = transaction.get(i);
-			java.util.Date time = new java.util.Date((long)getTransaction.getDate() *1000);
 			
-			System.out.println("Transaction ID: " + getTransaction.getTransactionId());
-			System.out.println("Date: " + time);
-			System.out.println("Customer ID: " + getTransaction.getCustomerId());
-			System.out.println("Table Number: " + getTransaction.getTableNumber());
-			System.out.println("Ordered Foods:");
-			System.out.println(" " + getTransaction.getFoods());
+			if(getTransaction.getTransactionId().equals(transactionId)) {
+				target = i;
+				break;
 			}
 		}
+		
+		for(int i = 0; i < transaction.get(target).getFoods().size(); i++) {
+			income += transaction.get(target).getFoods().get(i).getFoodPrice();
+		}
+		
+		return income;
 	}
+}

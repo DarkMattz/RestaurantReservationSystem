@@ -1,16 +1,16 @@
 package data;
 
-import java.util.Vector;
+import java.util.ArrayList;
 
 public class Transaction {
 
 	private String transactionId;
 	private String customerId;
 	private Integer tableNumber;
-	private Vector<Food> food = new Vector<>();
+	private ArrayList<Food> food = new ArrayList<>();
 	private Integer date;
 	
-	public Transaction(String transactionId, String customerId, Integer tableNumber, Vector<Food> food, Integer date) {
+	public Transaction(String transactionId, String customerId, Integer tableNumber, ArrayList<Food> food, Integer date) {
 		super();
 		this.transactionId = transactionId;
 		this.customerId = customerId;
@@ -43,11 +43,11 @@ public class Transaction {
 		this.tableNumber = tableNumber;
 	}
 
-	public Vector<Food> getFoods() {
+	public ArrayList<Food> getFoods() {
 		return food;
 	}
 
-	public void setFoodId(Vector<Food> food) {
+	public void setFoodId(ArrayList<Food> food) {
 		this.food = food;
 	}
 
