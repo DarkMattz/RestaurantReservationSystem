@@ -3,7 +3,7 @@ package userdata;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Userhandler {
+public class UserHandler {
 	
 	private User user = null;
 	
@@ -115,7 +115,7 @@ public class Userhandler {
 		return null;
 	}
 	
-	public Userhandler() {
+	public UserHandler() {
 		
 	}
 
