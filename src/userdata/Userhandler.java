@@ -6,8 +6,6 @@ import java.util.regex.Pattern;
 
 public class Userhandler {
 	
-	private User user = null;
-	
 	DatabaseUserHandler database = new DatabaseUserHandler();
 	
 	String regexEmail = "^(.+)@(\\S+)$";
