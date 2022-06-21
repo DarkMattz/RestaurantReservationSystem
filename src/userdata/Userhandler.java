@@ -16,7 +16,7 @@ public class Userhandler {
 		
 	}
 	
-	ArrayList<Customer> getAllCust(){
+	public ArrayList<Customer> getAllCust(){
 		
 		return database.getCustomerData();
 	}

@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="12294ce9-b460-492c-87fd-60a40f4d327f" name="Changes" comment="Init">
-      <change afterPath="$PROJECT_DIR$/src/database/Connect.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/database/DatabaseUserHandler.java" afterDir="false" />
+    <list default="true" id="12294ce9-b460-492c-87fd-60a40f4d327f" name="Changes" comment="Update DB Handler">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RestaurantDB.iml" beforeDir="false" afterPath="$PROJECT_DIR$/RestaurantDB.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RestaurantDB/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RestaurantDB/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RestaurantDB/database/Connect.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RestaurantDB/database/Connect.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/RestaurantDB/database/DatabaseUserHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/RestaurantDB/database/DatabaseUserHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/userdata/Userhandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/userdata/Userhandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,7 +104,21 @@
       <option name="presentableId" value="Default" />
       <updated>1655793376706</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Update DB Handler">
+      <created>1655825960152</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1655825960152</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Update DB Handler">
+      <created>1655826020116</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1655826020116</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -121,6 +135,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Init" />
-    <option name="LAST_COMMIT_MESSAGE" value="Init" />
+    <MESSAGE value="Update DB Handler" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update DB Handler" />
   </component>
 </project>
