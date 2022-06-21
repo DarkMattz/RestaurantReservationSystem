@@ -132,7 +132,7 @@ public class Userhandler {
 		return "Phone number is Invalid !";
 	}
 	
-	public void registerUser(String email, String name, String pass, String phone) {
+	public void registerCustomer(String email, String name, String pass, String phone) {
 		
 		database.PushData();
 	}
