@@ -22,4 +22,16 @@ public class Food {
     public Integer getFoodPrice() {
     	return foodPrice;
     }
+
+	public void setFoodId(String foodId) {
+		this.foodId = foodId;
+	}
+
+	public void setFoodName(String foodName) {
+		this.foodName = foodName;
+	}
+
+	public void setFoodPrice(Integer foodPrice) {
+		this.foodPrice = foodPrice;
+	}
 }
