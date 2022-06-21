@@ -133,9 +133,9 @@ public class Userhandler {
 		return "Phone number is Invalid !";
 	}
 	
-	public void registerCustomer(String email, String name, String pass, String phone) {
+	public void registerCustomer(String email, String name, String password, String phone) {
 		
-		database.PushData();
+		database.pushData(email, name, password, phone);
 	}
 	
 	public Customer customerLogin(String email, String password) {

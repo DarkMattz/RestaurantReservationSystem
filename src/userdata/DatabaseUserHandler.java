@@ -13,7 +13,7 @@ public class DatabaseUserHandler {
 		return false;
 	}
 
-	public boolean PushData() {
+	public boolean pushData(String email, String name, String password, String phone) {
 		// TODO Auto-generated method stub
 		return false;
 	}
