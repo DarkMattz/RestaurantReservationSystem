@@ -15,11 +15,10 @@ public class App {
     private Admin loggedInAdmin = null;
     private UserHandler userHandler = new UserHandler();
     private TransactionHandler transactionHandler = new TransactionHandler();
-//    private TableHandler tableHandler = new TableHandler();
-//    private FoodHandler foodHandler = new foodHandler();
+    private TableHandler tableHandler = new TableHandler();
+    private FoodHandler foodHandler = new foodHandler();
     
     private ArrayList<Customer> customers = userHandler.getAllCust();
-    private ArrayList<Admin> admins = userHandler.getAllAdmin();
     private ArrayList<Food> foods = foodHandler.getAllFood();
     private ArrayList<Table> tables = tableHandler.getAllTable();
     private ArrayList<Transaction> transactions = transactionHandler.getAllTransaction();
@@ -128,7 +127,7 @@ public class App {
 					scan.nextLine();
 				}
             	
-            	tableError = transactionHandler.isValidTable(people, tableNumber);
+            	tableError = tableHandler.isValidTable(people, tableNumber);
             	
             	if(tableError!=null) {
             		System.out.println(tableError);
@@ -200,6 +199,8 @@ public class App {
                          } while (name.isEmpty() || nameError != null);        
 
                         userHandler.editName(loggedInCustomer, name);
+                        System.out.println("Your name has been successfully updated!");
+                        pressEnter();
                         
                         break;
                     case 2:
@@ -217,6 +218,8 @@ public class App {
                         } while (phone.isEmpty() || phoneError != null);   
 
                     	userHandler.editPhone(loggedInCustomer, phone);
+                    	System.out.println("Your phone has been successfully updated!");
+                        pressEnter();
                     	
                         break;
                     case 3:
@@ -234,6 +237,8 @@ public class App {
                         } while (password.isEmpty() || passwordError != null);
 
                         userHandler.editPassword(loggedInCustomer, password);
+                        System.out.println("Your password has been successfully updated!");
+                        pressEnter();
                         
                         break;
                     case 4:
@@ -300,6 +305,10 @@ public class App {
         } while (phone.isEmpty() || phoneError != null);   
 
         userHandler.register(email, name, password, phone);
+        
+        System.out.println("User has been registered!");
+        
+        pressEnter();
     }
 
     private boolean loginCustomer() {
@@ -486,9 +495,9 @@ public class App {
 			}
 		} while (index < 0 || index > foods.size());
     	
-    	transactionHandler.removeTransaction(tables.get(index-1));
+    	transactionHandler.removeTransaction(transactions.get(index-1));
     	
-    	System.out.println("Food has been successfully deleted!");
+    	System.out.println("Transactions has been successfully deleted!");
     	
     	pressEnter();
     }
@@ -620,7 +629,6 @@ public class App {
     private void addNewTable() {
     	tables = tableHandler.getAllTable();
     	
-    	int tableNumber = tables.size()+1;
     	int tableCapacity = -1;
     	boolean isEmpty = true;
     	
@@ -636,7 +644,7 @@ public class App {
 			
 		} while (tableCapacity < 2 || tableCapacity > 10);
     	
-    	tableHandler.addTable(tableNumber, tableCapacity, isEmpty);
+    	tableHandler.addTable(tableCapacity, isEmpty);
     	
     	System.out.println("Table has successfully added!");
     	pressEnter();
