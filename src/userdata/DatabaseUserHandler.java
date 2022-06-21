@@ -26,6 +26,11 @@ public class DatabaseUserHandler {
 		return false;
 	}
 
+	public void deleteUser(String emailDeleted) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	
 
 }

@@ -6,8 +6,7 @@ import java.util.regex.Pattern;
 public class Userhandler {
 	
 	private User user = null;
-	Customer customer = new Customer();
-	Admin admin = new Admin();
+	
 	DatabaseUserHandler database = new DatabaseUserHandler();
 	
 	String regexEmail = "^(.+)@(\\S+)$";
@@ -142,6 +141,8 @@ public class Userhandler {
 	
 	public Customer customerLogin(String email, String password) {
 		
+		Customer customer = new Customer();
+		
 		if(database.isEmailExist(email) && database.isPassTrue(password)) {
 			
 			return customer;
@@ -153,6 +154,8 @@ public class Userhandler {
 	}
 	
 	public Admin adminLogin(String email, String password) {
+		
+		Admin admin = new Admin();
 		
 		if(database.isEmailExist(email) && database.isPassTrue(password)) {
 			
@@ -170,108 +173,4 @@ public class Userhandler {
 		return "User has been logged out";
 	}
 	
-	public String removeUser(String email) {
-		
-		boolean isEmailValid = false;
-		boolean isCheckEmailSuccess = false;
-		
-		if(email.isEmpty()) {
-			
-			return "Input your email to Continue !";
-		}else {
-			
-			//ngetest data email di database sesuai apa ngga
-			if(database.checkEmail(email)) {
-				
-				return "Invalid Email !";
-			}else {
-				
-				isEmailValid = true;
-				return null;
-			}
-			
-		}
-	}
-	
-	
-	
-	
-//	public String login(String email, String password) {
-//	
-//	boolean isEmailValid = false;
-//	boolean isPassValid = false;
-//	
-////	validasi email
-//	if(email.isEmpty()) {
-//		
-//		return "Input your Email address !";
-//	}else {
-//		
-//		Pattern pattern = Pattern.compile(regexEmail);
-//		Matcher matcher = pattern.matcher(email);
-//		
-//		// Jika email sesuai dengan pattern regex
-//		if(matcher.matches()) {
-//
-//			isEmailValid = true;
-//		}
-//		
-//		// Jika email tidak sesuai dengan pattern regex
-//		else {
-//			
-//			return "Email pattern is incorrect !";			
-//		}
-//		
-//		//ngecocokin yg ada di database cocok ga?
-//		if() {
-//			
-//			return "Email not found !";
-//		}else {
-//			
-//			isEmailValid = true;
-//		}
-//	}
-//	
-//		
-////		validasi password
-//		if(password.isEmpty()) {
-//			
-//			return "Input your password !";
-//		}else {
-//			
-//			// ngecocokin yg ada di database cocok ga?
-//			//checkPassword() nanti return nya false kalo misalkan dia ga sesuai dg yg terdaftar
-//			if(database.checkPassword()) {
-//				
-//				return "Password didn't match !";
-//			}else {
-//				
-//				isPassValid = true;
-//			}
-//
-//		}
-//		
-//		if(!isEmailValid) {
-//			
-//			System.out.println("Email is not valid");
-//		}
-//		
-//		
-//		if(!isPassValid) {
-//			
-//			System.out.println("Password is not valid");
-//		}
-//		
-//			
-//		if(isEmailValid && isPassValid) {
-//			
-//			return null;
-//		}
-//		
-//		return "Login data is incorrect !";
-//		
-//	
-//	return "Login unsuccessful !";
-//}
-
 }
