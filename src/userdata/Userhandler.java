@@ -153,17 +153,17 @@ public class Userhandler {
 	
 	public void editName(Customer customer, String name) {
 		
-		name = database.editName(customer, name);
+		database.editName(customer, name);
 	}
 	
 	public void editPhone(Customer customer, String phone) {
 		
-		phone = database.editPhone(customer, phone);
+		database.editPhone(customer, phone);
 	}
 	
 	public void editPass(Customer customer, String pass) {
 		
-		pass = database.editPass(customer, pass);
+		database.editPass(customer, pass);
 	}
 	
 	public String getCustomerName(String email) {
