@@ -5,15 +5,31 @@ public abstract class User {
 	private String password;
 	private String name;
 	private String type;
+	private String phone;
 	
 	
-	public User(String email, String password, String name, String type) {
+	public User(String email, String password, String name, String type, String phone) {
 		super();
 		this.email = email;
 		this.password = password;
 		this.name = name;
 		this.type = type;
+		this.phone = phone;
 	}
+
+	
+	
+	public String getPhone() {
+		return phone;
+	}
+
+
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+
 
 	public String getEmail() {
 		return email;

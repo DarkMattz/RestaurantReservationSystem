@@ -6,8 +6,8 @@ public class Admin extends User{
 	
 	Random rand = new Random();
 	
-	public Admin(String email, String password, String name, String type) {
-		super(email, password, name, type);
+	public Admin(String email, String password, String name, String type, String phone) {
+		super(email, password, name, type, phone);
 		// TODO Auto-generated constructor stub
 	}
 
