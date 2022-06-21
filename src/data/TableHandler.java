@@ -9,9 +9,7 @@ public class TableHandler {
 	private DatabaseTransactionHandler dbth = new DatabaseTransactionHandler();
 	
 	public ArrayList<Table> ReturnTable() {
-		dbth.ShowTable(table);
-		
-		return table;
+		return table = dbth.ShowTable(table);
 	}
 	
 	public void AddTable(Integer tableSize) {
