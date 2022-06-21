@@ -1,6 +1,7 @@
 package data;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class DatabaseTransactionHandler {
 	
@@ -32,7 +33,7 @@ public class DatabaseTransactionHandler {
 	}
 
 	public void AddTransaction(String transactionId, String customerId, Integer tableNumber, ArrayList<Food> food,
-			Integer date) {
+			Date date) {
 		// TODO Auto-generated method stub
 	}
 	

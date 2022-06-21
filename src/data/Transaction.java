@@ -1,6 +1,7 @@
 package data;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Transaction {
 
@@ -8,9 +9,9 @@ public class Transaction {
 	private String customerId;
 	private Integer tableNumber;
 	private ArrayList<Food> food = new ArrayList<>();
-	private Integer date;
+	private Date date;
 	
-	public Transaction(String transactionId, String customerId, Integer tableNumber, ArrayList<Food> food, Integer date) {
+	public Transaction(String transactionId, String customerId, Integer tableNumber, ArrayList<Food> food, Date date) {
 		super();
 		this.transactionId = transactionId;
 		this.customerId = customerId;
@@ -51,11 +52,11 @@ public class Transaction {
 		this.food = food;
 	}
 
-	public Integer getDate() {
+	public Date getDate() {
 		return date;
 	}
 
-	public void setDate(Integer date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 }

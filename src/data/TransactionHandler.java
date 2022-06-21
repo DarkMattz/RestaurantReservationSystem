@@ -2,12 +2,13 @@ package data;
 
 import database.DatabaseTransactionHandler;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class TransactionHandler {
 	
 	private DatabaseTransactionHandler dbth = new DatabaseTransactionHandler();
 	
-	public void NewTransaction(String customerId, Integer tableNumber, ArrayList<Food> food, Integer date) {
+	public void NewTransaction(String customerId, Integer tableNumber, ArrayList<Food> food, Date date) {
 		String transactionId = "TR" + (int)Math.ceil(Math.random()*10) + (int)Math.ceil(Math.random()*10) + (int)Math.ceil(Math.random()*10);
 		
 		//transaction.add(new Transaction(transactionId, customerId, tableNumber, food, date));
