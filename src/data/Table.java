@@ -5,10 +5,10 @@ public class Table {
     private int capacity;
     private boolean isEmpty;
 
-    public Table(int tableNumber, int capacity) {
+    public Table(int tableNumber, int capacity, boolean isEmpty) {
         this.tableNumber = tableNumber;
         this.capacity = capacity;
-        this.isEmpty = true;
+        this.isEmpty = isEmpty;
     }
 
     public int getTableNumber() {

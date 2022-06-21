@@ -1,19 +1,22 @@
 package data;
 
+import java.sql.Date;
+import java.util.ArrayList;
+
 public class Transaction {
 
 	private String transactionId;
 	private String customerId;
 	private Integer tableNumber;
-	private Food[] foods;
-	private Integer date;
+	private ArrayList<Food> food;
+	private Date date;
 	
-	public Transaction(String transactionId, String customerId, Integer tableNumber, Food[] foods, Integer date) {
+	public Transaction(String transactionId, String customerId, Integer tableNumber, ArrayList<Food> food, Date date) {
 		super();
 		this.transactionId = transactionId;
 		this.customerId = customerId;
 		this.tableNumber = tableNumber;
-		this.foods = foods;
+		this.food = food;
 		this.date = date;
 	}
 
@@ -41,19 +44,19 @@ public class Transaction {
 		this.tableNumber = tableNumber;
 	}
 
-	public Food[] getFoods() {
-		return foods;
+	public ArrayList<Food> getFoods() {
+		return food;
 	}
 
-	public void setFoodId(Food[] foods) {
-		this.foods = foods;
+	public void setFoodId(ArrayList<Food> food) {
+		this.food = food;
 	}
 
-	public Integer getDate() {
+	public Date getDate() {
 		return date;
 	}
 
-	public void setDate(Integer date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 }

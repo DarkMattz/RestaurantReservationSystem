@@ -15,13 +15,13 @@ public class App {
     private Admin loggedInAdmin = null;
     private UserHandler userHandler = new UserHandler();
     private TransactionHandler transactionHandler = new TransactionHandler();
-//    private TableHandler tableHandler = new TableHandler();
-//    private FoodHandler foodHandler = new foodHandler();
+    private TableHandler tableHandler = new TableHandler();
+    private FoodHandler foodHandler = new FoodHandler();
     
     private ArrayList<Customer> customers = userHandler.getAllCust();
-//    private ArrayList<Food> foods = foodHandler.getAllFood();
-//    private ArrayList<Table> tables = tableHandler.getAllTable();
-//    private ArrayList<Transaction> transactions = transactionHandler.getAllTransaction();
+    private ArrayList<Food> foods = foodHandler.getAllFood();
+    private ArrayList<Table> tables = tableHandler.getAllTable();
+    private ArrayList<Transaction> transactions = transactionHandler.getAllTransaction();
 
     private Scanner scan = new Scanner(System.in);
 
@@ -151,21 +151,25 @@ public class App {
 				
 				System.out.printf("Please input food number [type 'finish' to finish your order]: ");
 				foodIndex = scan.nextLine();
-				int index = Integer.parseInt(foodIndex)-1;
 				
 				if (!foodIndex.equalsIgnoreCase("finish")) {
+					int index = Integer.parseInt(foodIndex);
 					if(index < 0 || index > foods.size()) {
-						Food i = foods.get(index);
+						System.out.println("Please enter a valid number [1-"+foods.size()+"]");
+					}else{
+						Food i = foods.get(index-1);
 						orderedFood.add(i);
 						System.out.printf("%s has been added to your order!\n", i.getFoodName());
-					}else{
-						System.out.println("Please enter a valid number [1-"+foods.size()+"]");
 					}
+				}else if(foodIndex.equalsIgnoreCase("finish") && orderedFood.isEmpty()){
+					System.out.println("You need to order a food first!");
+					foodIndex = "noFinish";
 				}
 				
 			} while (!foodIndex.equalsIgnoreCase("finish"));
             
             transactionHandler.addTransaction(customerId, tableNumber, orderedFood);
+            tableHandler.changeToNotEmpty(tableNumber);
             
             System.out.println("Your Reservation has been made!");
             pressEnter();
@@ -479,6 +483,8 @@ public class App {
             System.out.println("~~~~~~~~~~~~~~~~~");
             System.out.println("1. View all transactions");
             System.out.println("2. Remove transaction");
+            System.out.println("3. Back");
+            System.out.print(">> ");
 
             try {
                 input = Integer.parseInt(scan.nextLine());
@@ -488,20 +494,17 @@ public class App {
 
             switch (input) {
                 case 1:
+                	viewAllTransactions();
                     break;
                 case 2:
-                	viewAllTransactions();
-                	pressEnter();
-                    break;
-                case 3:
                 	removeTransactions();
                     break;
-                case 4:
+                case 3:
                     break;
                 default:
-                    System.out.println("Please input from 1 to 4");
+                    System.out.println("Please input from 1 to 3");
             }
-        }while (input != 4);
+        }while (input != 3);
     }
     
     private void removeTransactions() {
@@ -519,7 +522,7 @@ public class App {
 			}
 		} while (index < 0 || index > foods.size());
     	
-    	transactionHandler.removeTransaction(transactions.get(index-1));
+    	transactionHandler.removeTransaction(transactions.get(index-1).getTransactionId());
     	
     	System.out.println("Transactions has been successfully deleted!");
     	
@@ -537,6 +540,7 @@ public class App {
             System.out.println("2. View all menus");
             System.out.println("3. Remove menu");
             System.out.println("4. Go back");
+            System.out.print(">> ");
 
             try {
                 input = Integer.parseInt(scan.nextLine());
@@ -546,6 +550,7 @@ public class App {
 
             switch (input) {
                 case 1:
+                	addMenu();
                     break;
                 case 2:
                 	viewAllMenu();
@@ -574,14 +579,14 @@ public class App {
     	Integer foodPrice = -1;
     	
     	do {
-			System.out.println("Please enter the food name [5-20 Characters]: ");
+			System.out.print("Please enter the food name [5-20 Characters]: ");
 			
 			foodName = scan.nextLine();
 			
 		} while (foodName.length() < 5 || foodName.length() > 20);
     	
     	do {
-			System.out.println("Please enter the food price [Minimal price is 10000]: ");
+			System.out.print("Please enter the food price [Minimal price is 10000]: ");
 			
 			try {
 				foodPrice = scan.nextInt();
@@ -616,7 +621,7 @@ public class App {
 			}
 		} while (index < 0 || index > foods.size());
     	
-    	foodHandler.removeFood(foods.get(index-1));
+    	foodHandler.removeFood(foods.get(index-1).getFoodId());
     	
     	System.out.println("Food has been successfully deleted!");
     	
@@ -634,6 +639,7 @@ public class App {
             System.out.println("2. View all tables");
             System.out.println("3. Remove table");
             System.out.println("4. Go back");
+            System.out.print(">> ");
 
             try {
                 input = Integer.parseInt(scan.nextLine());
@@ -668,11 +674,12 @@ public class App {
     	
     	tables = tableHandler.getAllTable();
     	
+    	int tableNumber = tables.size()+1;
+    	
     	int tableCapacity = -1;
-    	boolean isEmpty = true;
     	
     	do {
-			System.out.println("Please enter the capacity [2-10]: ");
+			System.out.print("Please enter the capacity [2-10]: ");
 			
 			try {
 				tableCapacity = scan.nextInt();
@@ -683,7 +690,7 @@ public class App {
 			
 		} while (tableCapacity < 2 || tableCapacity > 10);
     	
-    	tableHandler.addTable(tableCapacity, isEmpty);
+    	tableHandler.addTable(tableNumber, tableCapacity);
     	
     	System.out.println("Table has successfully added!");
     	pressEnter();
@@ -709,7 +716,7 @@ public class App {
 			}
 		} while (tableNumber < 0 || tableNumber > tables.size());
     	
-    	tableHandler.removeTable(tables.get(tableNumber-1));
+    	tableHandler.removeTable(tables.get(tableNumber-1).getTableNumber());
     	
     	System.out.println("Table has been successfully deleted!");
     	
@@ -745,7 +752,7 @@ public class App {
     	transactions = transactionHandler.getAllTransaction();
     	
     	System.out.println("");
-    	System.out.println("+=====+=======================+============================+==========+====================+==========================+======================+");
+    	System.out.println("+============================================================================================================================================+");
         System.out.println("|                                                                   ALL TRANSACTIONS                                                         |");
         System.out.println("+=====+=======================+============================+==========+====================+==========================+======================+");
     	System.out.println("| No. | Transaction ID        | Customer Name              | Table No | Items Total        | Total Income             | Transaction Date     |");
@@ -760,7 +767,7 @@ public class App {
 	        	System.out.printf("| %-4d| %-22s| %-27s| %-9d| %-19s| %-25s| %-21s|\n", 
 	        			index, transaction.getTransactionId(), 
 	        			userHandler.getCustomerName(transaction.getCustomerId()),
-	        			transaction.getTableNumber(), transaction.getFoods().length + "item(s)", 
+	        			transaction.getTableNumber(), transaction.getFoods().size() + "item(s)", 
 	        			"Rp. "+transactionHandler.calculateIncome(transaction),
 	        			transaction.getDate().toString());
 	            index++;
@@ -810,12 +817,10 @@ public class App {
         	System.out.println("|                      NO TABLE AVAILABLE                       |");
         	System.out.println("|                                                               |");
         }else {
-        	int index = 1;
             for (Table table : tables) {
             	String reserved = table.isEmpty() ? "YES" : "NO";
             	
-            	System.out.printf("| %-13d| %-23d| %-26s|\n", index, table.getTableNumber(), table.getCapacity(), reserved);
-                index++;
+            	System.out.printf("| %-13d| %-23d| %-22s|\n", table.getTableNumber(), table.getCapacity(), reserved);
             }
         }
         System.out.println("+==============+========================+=======================+");
@@ -831,11 +836,9 @@ public class App {
         System.out.println("+==============+========================+=======================+");
     	System.out.println("| Table Number | Table Capacity         | Is Available          |");
     	System.out.println("+==============+========================+=======================+");
-        int index = 1;
         for (Table table : tables) {
-        	if(table.isEmpty() && table.getCapacity()>=people) {
-        		System.out.printf("| %-13d| %-23d| %-26s|\n", index, table.getTableNumber(), table.getCapacity(), "YES");
-                index++;
+        	if(!table.isEmpty() && table.getCapacity()>=people) {
+        		System.out.printf("| %-13d| %-23d| %-22s|\n", table.getTableNumber(), table.getCapacity(), "YES");
         	}
         }
         System.out.println("+==============+========================+=======================+");

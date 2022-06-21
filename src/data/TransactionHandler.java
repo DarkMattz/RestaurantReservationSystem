@@ -1,28 +1,32 @@
 package data;
 
-import java.util.Vector;
+import database.DatabaseTransactionHandler;
+
+import java.util.ArrayList;
+import java.sql.Date;
 
 public class TransactionHandler {
 	
-	private Vector<Transaction> transaction = new Vector<>();	
+	private DatabaseTransactionHandler dbth = new DatabaseTransactionHandler();
 	
-	public void NewTransaction(String transactionId, String customerId, Integer tableNumber, Food[] food, Integer date) {
-		transaction.add(new Transaction(transactionId, customerId, tableNumber, food, date));
+	public void addTransaction(String customerId, Integer tableNumber, ArrayList<Food> food) {
+		String transactionId = "TR" + (int)Math.ceil(Math.random()*10) + (int)Math.ceil(Math.random()*10) + (int)Math.ceil(Math.random()*10);
+		dbth.AddTransaction(transactionId, customerId, tableNumber, food, new Date(System.currentTimeMillis()));
 	}
 	
-	public void DeleteTransaction(String transactionId) {
-		
-		Integer inputDelete = null;
-		
-		for(int i = 0; i < transaction.size(); i++) {
-			Transaction getTransaction = transaction.get(i);
-			
-			if(getTransaction.getTransactionId().equals(transactionId)) {
-				inputDelete = i;
-				break;
-			}
+	public void removeTransaction(String transactionId) {
+		dbth.DeleteTransaction(transactionId);
+	}
+
+	public int calculateIncome(Transaction transaction){
+		int value = 0;
+		for(Food food : transaction.getFoods()){
+			value+= food.getFoodPrice();
 		}
-		
-		transaction.remove(inputDelete);
+		return value;
+	}
+
+	public ArrayList<Transaction> getAllTransaction(){
+		return dbth.fetchTransaction();
 	}
 }
