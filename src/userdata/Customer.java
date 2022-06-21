@@ -1,19 +1,32 @@
 package userdata;
 
-import java.util.Random;
 
 public class Customer extends User{
-	Random rand = new Random();
+	private String name;
+	private String phone;
 	
-	public Customer(String id, String email, String password, String name, String type) {
-		super(id, email, password, name, type);
-		// TODO Auto-generated constructor stub
+	public Customer(String email, String password, String name, String phone) {
+		super(email, password);
+		this.name = name;
+		this.phone = phone;
 	}
 
-	@Override
-	public String generateId() {
-
-		return "CU" + rand.nextInt(10) + rand.nextInt(10) + rand.nextInt(10);
+	public String getName() {
+		return name;
 	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+	
+	
 
 }

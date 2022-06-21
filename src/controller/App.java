@@ -15,13 +15,13 @@ public class App {
     private Admin loggedInAdmin = null;
     private UserHandler userHandler = new UserHandler();
     private TransactionHandler transactionHandler = new TransactionHandler();
-    private TableHandler tableHandler = new TableHandler();
-    private FoodHandler foodHandler = new foodHandler();
+//    private TableHandler tableHandler = new TableHandler();
+//    private FoodHandler foodHandler = new foodHandler();
     
     private ArrayList<Customer> customers = userHandler.getAllCust();
-    private ArrayList<Food> foods = foodHandler.getAllFood();
-    private ArrayList<Table> tables = tableHandler.getAllTable();
-    private ArrayList<Transaction> transactions = transactionHandler.getAllTransaction();
+//    private ArrayList<Food> foods = foodHandler.getAllFood();
+//    private ArrayList<Table> tables = tableHandler.getAllTable();
+//    private ArrayList<Transaction> transactions = transactionHandler.getAllTransaction();
 
     private Scanner scan = new Scanner(System.in);
 
@@ -35,6 +35,7 @@ public class App {
         int input;
 
         while(true){
+        	System.out.println("");
             System.out.println("WELCOME TO THE RESTAURANT");
             System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~");
             System.out.println("1. Customer Menu");
@@ -68,12 +69,13 @@ public class App {
     private void customer() {
         int input;
         do {
+        	System.out.println("");
             System.out.println("Hello Customer!!!");
             System.out.println("~~~~~~~~~~~~~~~~~");
             System.out.println("1. Register as a new Customer");
             System.out.println("2. Reserve a place");
             System.out.println("3. Edit your profile");
-            System.out.println("4. Go back");
+            System.out.println("4. Go back/Logout");
             System.out.print(">> ");
 
             try {
@@ -93,21 +95,20 @@ public class App {
                     editProfile();
                     break;
                 case 4:
-                	userLogout();
+                	loggedInCustomer = null;
                 	break;
                 default:
                     System.out.println("Please input from 1 to 4");
             }
         } while (input != 4);
     }
-    
-    private void userLogout() {
-    	loggedInCustomer = null;
-    }
 
     private void reserve() {
+    	System.out.println("");
+    	System.out.println("RESERVE A TABLE");
+    	System.out.println("=============================");
+    	
     	if(loggedInCustomer != null || loginCustomer()){
-    		
     		String customerId = loggedInCustomer.getEmail();
     		
             int people = -1;
@@ -172,9 +173,11 @@ public class App {
     }
 
     private void editProfile() {
+        
         if(loggedInCustomer != null || loginCustomer()){
             int input = 0;
             do {
+            	System.out.println("");
                 System.out.println("Edit your profile");
                 System.out.println("~~~~~~~~~~~~~~~~~");
                 System.out.println("1. Edit your name");
@@ -195,9 +198,9 @@ public class App {
                     	 String name, nameError;
                          
                          do {
-                         	System.out.print("Input your name: ");
+                         	System.out.print("Input your new name: ");
                          	name = scan.nextLine();
-                             nameError = userHandler.isValidName(name);
+                             nameError = userHandler.isNameValid(name);
                              
                              if(nameError != null){
                              	System.out.println(nameError);
@@ -214,9 +217,9 @@ public class App {
                     	String phone, phoneError;
                     	
                     	do {
-                        	System.out.print("Input your phone: ");
+                        	System.out.print("Input your new phone number: ");
                             phone = scan.nextLine();
-                            phoneError = userHandler.isValidPhone(phone);
+                            phoneError = userHandler.isPhoneValid(phone);
                             
                             if(phoneError != null){
                             	System.out.println(phoneError);
@@ -233,9 +236,9 @@ public class App {
                         String password, passwordError;
 
                         do {
-                            System.out.print("Input your password [Must not be blank]: ");
+                            System.out.print("Input your new password [Must not be blank]: ");
                             password = scan.nextLine();
-                            passwordError = userHandler.isValidPassword(password);
+                            passwordError = userHandler.isPasswordValid(password);
                             
                             if(passwordError != null){
                             	System.out.println(passwordError);
@@ -243,7 +246,7 @@ public class App {
                             
                         } while (password.isEmpty() || passwordError != null);
 
-                        userHandler.editPassword(loggedInCustomer, password);
+                        userHandler.editPass(loggedInCustomer, password);
                         System.out.println("Your password has been successfully updated!");
                         pressEnter();
                         
@@ -259,15 +262,19 @@ public class App {
     }
     
     private void register() {
+    	System.out.println("");
+        System.out.println("REGISTER CUSTOMER");
+        System.out.println("===============================");
+        
         String email, emailError;
 
         do {
             System.out.print("Input your email [Must not be blank]: ");
             email = scan.nextLine();
-            emailError = userHandler.isValidEmail(email);
+            emailError = userHandler.isValidNewEmail(email);
             
             if (emailError != null) {
-				System.out.println("emailError");
+				System.out.println(emailError);
 			}
             
         } while (email.isEmpty() || emailError != null);
@@ -277,8 +284,8 @@ public class App {
         do {
             System.out.print("Input your password [8-20 Characters]: ");
             password = scan.nextLine();
-            passwordError = userHandler.isValidPassword(password);
-            
+            passwordError = userHandler.isPasswordValid(password);
+           
             if(passwordError != null){
             	System.out.println(passwordError);
             }
@@ -290,7 +297,7 @@ public class App {
         do {
         	System.out.print("Input your name: ");
         	name = scan.nextLine();
-            nameError = userHandler.isValidName(name);
+            nameError = userHandler.isNameValid(name);
             
             if(nameError != null){
             	System.out.println(nameError);
@@ -301,9 +308,9 @@ public class App {
         String phone, phoneError;
         
         do {
-        	System.out.print("Input your phone: ");
+        	System.out.print("Input your phone [9-13 characters]: ");
             phone = scan.nextLine();
-            phoneError = userHandler.isValidPhone(phone);
+            phoneError = userHandler.isPhoneValid(phone);
             
             if(phoneError != null){
             	System.out.println(phoneError);
@@ -311,7 +318,7 @@ public class App {
             
         } while (phone.isEmpty() || phoneError != null);   
 
-        userHandler.register(email, name, password, phone);
+        userHandler.registerCustomer(email, name, password, phone);
         
         System.out.println("User has been registered!");
         
@@ -322,6 +329,9 @@ public class App {
     	customers = userHandler.getAllCust();
     	
         if(!customers.isEmpty()) {
+        	System.out.println("");
+            System.out.println("LOGIN CUSTOMER");
+            System.out.println("===============================");
             do {
                 String email, emailError;
 
@@ -351,37 +361,37 @@ public class App {
                     
                 } while (password.isEmpty());
                 
-                loggedInCustomer = userHandler.loginCustomer(email, password);
+                loggedInCustomer = userHandler.customerLogin(email, password);
                 
                 if(loggedInCustomer == null) {
                 	System.out.println("Failed to Log In! Please check your email / password. ");
                 	return false;
                 }else {
                 	System.out.println("Successfully logged in...");
-                	return true;
                 	pressEnter();
+                	return true;
                 }
 
             } while (true);
         } else {
-            System.out.println("No customer in the system");
+            System.out.println("\nNo customer in the system, please register yourself first!");
+            pressEnter();
             return false;
         }
-        
-        return true;
     }
 
     private void manager() {
     	if(loggedInAdmin != null || loginManager()){
 	        int input;
 	        do {
+	        	System.out.println("");
 	            System.out.println("Hello Manager!!!");
 	            System.out.println("~~~~~~~~~~~~~~~~~");
 	            System.out.println("1. View all registered customers");
 	            System.out.println("2. Manage tables");
 	            System.out.println("3. Manage menus");
 	            System.out.println("4. Transaction manager");
-	            System.out.println("5. Go back");
+	            System.out.println("5. Go back/Logout");
 	            System.out.print(">> ");
 	
 	            try {
@@ -404,6 +414,7 @@ public class App {
 	                    transactionManager();
 	                    break;
 	                case 5:
+	                	loggedInAdmin = null;
 	                    break;
 	                default:
 	                    System.out.println("Please input from 1 to 5");
@@ -415,6 +426,10 @@ public class App {
     
     private boolean loginManager() {
         String email, emailError;
+        
+        System.out.println("");
+        System.out.println("LOGIN MANAGER");
+        System.out.println("===============================");
 
         do {
             System.out.print("Input your email [Must not be blank | press 0 to quit]: ");
@@ -442,7 +457,7 @@ public class App {
             
         } while (password.isEmpty());
 
-        loggedInAdmin = userHandler.loginManager(email, password);
+        loggedInAdmin = userHandler.adminLogin(email, password);
         
         if(loggedInAdmin == null) {
         	System.out.println("Failed to Log In! Please check your email / password. ");
@@ -459,6 +474,7 @@ public class App {
     	int input;
 
         do{
+        	System.out.println("");
             System.out.println("Transaction Manager");
             System.out.println("~~~~~~~~~~~~~~~~~");
             System.out.println("1. View all transactions");
@@ -514,6 +530,7 @@ public class App {
         int input;
 
         do{
+        	System.out.println("");
             System.out.println("Menu Management");
             System.out.println("~~~~~~~~~~~~~~~~~");
             System.out.println("1. Add new menu");
@@ -546,6 +563,11 @@ public class App {
     }
     
     private void addMenu() {
+    	
+    	System.out.println("");
+    	System.out.println("ADD MENU");
+    	System.out.println("==================================");
+    	
     	foods = foodHandler.getAllFood();
     	
     	String foodName;
@@ -577,6 +599,9 @@ public class App {
     }
     
     private void removeMenu() {
+    	System.out.println("");
+    	System.out.println("REMOVE MENU");
+    	System.out.println("==================================");
     	viewAllMenu();
     	
     	int index = -1;
@@ -602,6 +627,7 @@ public class App {
     	int input;
 
         do{
+        	System.out.println("");
             System.out.println("Table Management");
             System.out.println("~~~~~~~~~~~~~~~~~");
             System.out.println("1. Add new table");
@@ -635,6 +661,11 @@ public class App {
     }
     
     private void addNewTable() {
+    	
+    	System.out.println("");
+    	System.out.println("ADD NEW TABLE");
+    	System.out.println("==================================");
+    	
     	tables = tableHandler.getAllTable();
     	
     	int tableCapacity = -1;
@@ -659,6 +690,11 @@ public class App {
     }
     
     private void removeTable() {
+    	
+    	System.out.println("");
+    	System.out.println("REMOVE TABLE");
+    	System.out.println("==================================");
+    	
     	viewAllTable();
     	
     	int tableNumber = -1;
@@ -683,16 +719,23 @@ public class App {
     private void viewAllCustomers() {
     	customers = userHandler.getAllCust();
     	
+    	System.out.println("");
     	System.out.println("+================================================================================+");
         System.out.println("|                             ALL REGISTERED CUSTOMERS                           |");
         System.out.println("+=====+============================+=========================+===================+");
     	System.out.println("| No. | Customer Email             | Customer Name           | Customer Phone    |");
     	System.out.println("+=====+============================+=========================+===================+");
-        int index = 1;
-        for (Customer customer : customers) {
-        	System.out.printf("| %-4d| %-27s| %-24s| %-18s|\n", index, customer.getEmail(), customer.getName(), customer.getPhone());
-            index++;
-        }
+        if (customers.isEmpty()) {
+        	System.out.println("|                                                                                |");
+        	System.out.println("|                               NO CUSTOMER REGISTERED                           |");
+        	System.out.println("|                                                                                |");
+		}else {
+			int index = 1;
+	        for (Customer customer : customers) {
+	        	System.out.printf("| %-4d| %-27s| %-24s| %-18s|\n", index, customer.getEmail(), customer.getName(), customer.getPhone());
+	            index++;
+	        }
+		}
         System.out.println("+=====+============================+=========================+===================+");
         
         pressEnter();
@@ -701,37 +744,54 @@ public class App {
     private void viewAllTransactions() {
     	transactions = transactionHandler.getAllTransaction();
     	
-    	System.out.println("+=====+===============================================================================================================+");
-        System.out.println("|                                                   ALL TRANSACTIONS                                                  |");
-        System.out.println("+=====+=======================+============================+==========+====================+==========================+");
-    	System.out.println("| No. | Transaction ID        | Customer Name              | Table No | Items Total        | Total Income             |");
-    	System.out.println("+=====+=======================+============================+==========+====================+==========================+");
-        int index = 1;
-        for (Transaction transaction : transactions) {
-        	System.out.printf("| %-4d| %-22s| %-27s| %-9d| %-19s| %-25s|\n", 
-        			index, transaction.getTransactionId(), 
-        			userHandler.getCustomerName(transaction.getCustomerId()),
-        			transaction.getTableNumber(), transaction.getFoods().length + "item(s)", 
-        			"Rp. "+transactionHandler.calculateIncome(transaction));
-            index++;
-        }
-        System.out.println("+=====+=======================+============================+==========+====================+=========================+");
+    	System.out.println("");
+    	System.out.println("+=====+=======================+============================+==========+====================+==========================+======================+");
+        System.out.println("|                                                                   ALL TRANSACTIONS                                                         |");
+        System.out.println("+=====+=======================+============================+==========+====================+==========================+======================+");
+    	System.out.println("| No. | Transaction ID        | Customer Name              | Table No | Items Total        | Total Income             | Transaction Date     |");
+    	System.out.println("+=====+=======================+============================+==========+====================+==========================+======================+");
+    	if (transactions.isEmpty()) {
+        	System.out.println("|                                                                                                                                        |");
+        	System.out.println("|                                                             NO TRANSACTIONS                                                            |");
+        	System.out.println("|                                                                                                                                        |");
+		}else {
+			int index = 1;
+	        for (Transaction transaction : transactions) {
+	        	System.out.printf("| %-4d| %-22s| %-27s| %-9d| %-19s| %-25s| %-21s|\n", 
+	        			index, transaction.getTransactionId(), 
+	        			userHandler.getCustomerName(transaction.getCustomerId()),
+	        			transaction.getTableNumber(), transaction.getFoods().length + "item(s)", 
+	        			"Rp. "+transactionHandler.calculateIncome(transaction),
+	        			transaction.getDate().toString());
+	            index++;
+	        }
+		}
+        
+        System.out.println("+=====+=======================+============================+==========+====================+==========================+======================+");
     	
     }
     
     private void viewAllMenu() {
     	foods = foodHandler.getAllFood();
     	
+    	System.out.println("");
     	System.out.println("+===================================================================+");
         System.out.println("|                             ALL MENU                              |");
         System.out.println("+=====+================+========================+===================+");
     	System.out.println("| No. | Food ID        | Food Name              | Food Price        |");
     	System.out.println("+=====+================+========================+===================+");
-        int index = 1;
-        for (Food food : foods) {
-        	System.out.printf("| %-4d| %-15s| %-23s| %-18s|\n", index, food.getFoodId(), food.getFoodName(), "Rp. "+food.getFoodPrice());
-            index++;
-        }
+    	if (foods.isEmpty()) {
+    		System.out.println("|                                                                   |");
+    		System.out.println("|                           MENU IS EMPTY                           |");
+    		System.out.println("|                                                                   |");
+		}else {
+			int index = 1;
+	        for (Food food : foods) {
+	        	System.out.printf("| %-4d| %-15s| %-23s| %-18s|\n", index, food.getFoodId(), food.getFoodName(), "Rp. "+food.getFoodPrice());
+	            index++;
+	        }
+		}
+        
         System.out.println("+=====+================+========================+===================+");
 
     }
@@ -739,17 +799,24 @@ public class App {
     private void viewAllTable() {
     	tables = tableHandler.getAllTable();
     	
+    	System.out.println("");
     	System.out.println("+===============================================================+");
         System.out.println("|                          ALL TABLE                            |");
         System.out.println("+==============+========================+=======================+");
     	System.out.println("| Table Number | Table Capacity         | Is Available          |");
     	System.out.println("+==============+========================+=======================+");
-        int index = 1;
-        for (Table table : tables) {
-        	String reserved = table.isEmpty() ? "YES" : "NO";
-        	
-        	System.out.printf("| %-13d| %-23d| %-26s|\n", index, table.getTableNumber(), table.getCapacity(), reserved);
-            index++;
+        if(tables.isEmpty()) {
+        	System.out.println("|                                                               |");
+        	System.out.println("|                      NO TABLE AVAILABLE                       |");
+        	System.out.println("|                                                               |");
+        }else {
+        	int index = 1;
+            for (Table table : tables) {
+            	String reserved = table.isEmpty() ? "YES" : "NO";
+            	
+            	System.out.printf("| %-13d| %-23d| %-26s|\n", index, table.getTableNumber(), table.getCapacity(), reserved);
+                index++;
+            }
         }
         System.out.println("+==============+========================+=======================+");
 
@@ -758,6 +825,7 @@ public class App {
     private void viewAvailableTable(int people) {
     	tables = tableHandler.getAllTable();
     	
+    	System.out.println("");
     	System.out.println("+===============================================================+");
         System.out.println("|                       AVAILABLE TABLE                         |");
         System.out.println("+==============+========================+=======================+");
