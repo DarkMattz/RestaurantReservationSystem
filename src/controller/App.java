@@ -108,7 +108,7 @@ public class App {
     private void reserve() {
     	if(loggedInCustomer != null || loginCustomer()){
     		
-    		String customerId = loggedInCustomer.getId();
+    		String customerId = loggedInCustomer.getEmail();
     		
             int people = -1;
             do {
@@ -710,7 +710,7 @@ public class App {
         for (Transaction transaction : transactions) {
         	System.out.printf("| %-4d| %-22s| %-27s| %-9d| %-19s| %-25s|\n", 
         			index, transaction.getTransactionId(), 
-        			transactionHandler.getCustomerName(transaction),
+        			userHandler.getCustomerName(transaction.getCustomerId()),
         			transaction.getTableNumber(), transaction.getFoods().length + "item(s)", 
         			"Rp. "+transactionHandler.calculateIncome(transaction));
             index++;
