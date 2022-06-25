@@ -10,7 +10,7 @@ public class TransactionHandler {
 	private DatabaseTransactionHandler dbth = new DatabaseTransactionHandler();
 	
 	public void addTransaction(String customerId, Integer tableNumber, ArrayList<Food> food) {
-		String transactionId = "TR" + (int)Math.ceil(Math.random()*10) + (int)Math.ceil(Math.random()*10) + (int)Math.ceil(Math.random()*10);
+		String transactionId = "TR" + (int)Math.floor(Math.random()*10) + (int)Math.floor(Math.random()*10) + (int)Math.floor(Math.random()*10);
 		dbth.AddTransaction(transactionId, customerId, tableNumber, food, new Date(System.currentTimeMillis()));
 	}
 	

@@ -520,7 +520,7 @@ public class App {
 			} catch (Exception e) {
 				scan.nextLine();
 			}
-		} while (index < 0 || index > foods.size());
+		} while (index < 1 || index > foods.size());
     	
     	transactionHandler.removeTransaction(transactions.get(index-1).getTransactionId());
     	
@@ -619,7 +619,7 @@ public class App {
 			} catch (Exception e) {
 				scan.nextLine();
 			}
-		} while (index < 0 || index > foods.size());
+		} while (index < 1 || index > foods.size());
     	
     	foodHandler.removeFood(foods.get(index-1).getFoodId());
     	
@@ -714,7 +714,7 @@ public class App {
 			} catch (Exception e) {
 				scan.nextLine();
 			}
-		} while (tableNumber < 0 || tableNumber > tables.size());
+		} while (tableNumber < 1 || tableNumber > tables.size());
     	
     	tableHandler.removeTable(tables.get(tableNumber-1).getTableNumber());
     	
