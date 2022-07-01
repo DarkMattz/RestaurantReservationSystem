@@ -1,6 +1,6 @@
 # Restaurant Reservation System
 
-Group 3:
+Group 4:
 
 Tricia Estella - 2440003695
 
