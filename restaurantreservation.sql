@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 21, 2022 at 07:12 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Generation Time: Jul 01, 2022 at 03:56 PM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 7.4.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -206,9 +206,7 @@ ALTER TABLE `table`
 -- Indexes for table `transaction`
 --
 ALTER TABLE `transaction`
-  ADD PRIMARY KEY (`ID`),
-  ADD KEY `customerEmail` (`customerEmail`),
-  ADD KEY `tableNumber` (`tableNumber`);
+  ADD PRIMARY KEY (`ID`);
 
 --
 -- Indexes for table `users`
@@ -225,17 +223,6 @@ ALTER TABLE `users`
 --
 ALTER TABLE `orderedfood`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `transaction`
---
-ALTER TABLE `transaction`
-  ADD CONSTRAINT `transaction_ibfk_1` FOREIGN KEY (`customerEmail`) REFERENCES `users` (`email`),
-  ADD CONSTRAINT `transaction_ibfk_2` FOREIGN KEY (`tableNumber`) REFERENCES `table` (`number`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
